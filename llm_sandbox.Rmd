@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ```{r install-packages, eval=FALSE}
 # Install required packages
-install.packages(c("ellmer", "httr", "jsonlite", "rvest"))
+install.packages(c("httr", "jsonlite", "rvest"))
 ```
 
 ```{r load-packages}
@@ -37,7 +37,7 @@ chat <- chat_groq(
   model = "meta-llama/llama-4-scout-17b-16e-instruct"
 )
 
-chat$chat("Give me 20 names for a pet turtle")
+chat$chat("Give me 20 names for a pet sloth")
 
 ```
 
@@ -173,7 +173,9 @@ extract_csv_gemini <- gemini_chat$chat("Extract all of the information in this i
 ### Your Turn: Find an image from the web and ask Llama 4 a question about it using `content_image_url()`
 
 ```{r}
+friend_photo <- content_image_url("https://pbs.twimg.com/media/GT_VbudWAAIQN9x?format=jpg&name=large")
 
+extract_csv <- chat$chat("What are the hair colors of each person in this photo?", friend_photo)
 
 ```
 
